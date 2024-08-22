@@ -1,7 +1,6 @@
 package com.example.movieapp.service;
 
 import com.example.movieapp.dto.requestDto.yonetmenSaveDto;
-import com.example.movieapp.entity.Movie;
 import com.example.movieapp.entity.Yonetmen;
 import com.example.movieapp.repository.yonetmenRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,4 +20,6 @@ public class yonetmenService {
         return true;
 
     }
+
+
 }

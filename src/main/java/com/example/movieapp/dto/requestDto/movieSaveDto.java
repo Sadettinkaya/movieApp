@@ -11,4 +11,6 @@ public class movieSaveDto {
     private String film_adi;
 
     private int imdb;
+
+    private Long yonetmen_id;
 }

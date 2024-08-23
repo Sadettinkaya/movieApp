@@ -31,7 +31,7 @@ public class movieService {
 
        Yonetmen yonetmen= yonetmenrepository.findById(yonetmenid).get();
        Movie movie = Movie.builder().film_adi(filmadi).imdb(imdb).yonetmen(yonetmen).build();
-       movierepository.save(movie);
+       movierepository.save(movie); //entity kaydeder o yüzden dtodan entitye çevirdik
        return true;
     }
 
@@ -54,5 +54,10 @@ public class movieService {
         }
 
         return  movielistyonetmen;
+    }
+
+    public Boolean deleteMovieId(Long movieId) {
+         movierepository.deleteById(movieId);
+         return true;
     }
 }

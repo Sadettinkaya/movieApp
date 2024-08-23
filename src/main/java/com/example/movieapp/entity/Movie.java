@@ -25,6 +25,7 @@ public class Movie {
     private int imdb;
 
 
+    //3.tabloyu oluşturduk çokaçok ilişkisi olduğu için
     @ManyToMany
     @JoinTable(
             name = "movie_category",
@@ -33,7 +34,8 @@ public class Movie {
     )
     private List<Category> categories;
 
-    @ManyToOne
+    //bağantıyı yöneten taraf burdaki yönetmen nesnesi o yüzden moviesavedtoya da koyduk
+    @ManyToOne(cascade = CascadeType.ALL) //movie silince yönetmeni de silcek
     @JoinColumn(name = "yonetmen_id")
     private Yonetmen yonetmen;
 

@@ -18,15 +18,23 @@ public class MovieController {
 
     private final movieService movieservice;
 
+    //request dtoyu client verdi bizde onu kaydettik veri tabanına bool döndürdük cliente
     @PostMapping("/saveMovie")
     public ResponseEntity<Boolean> saveMovie(@RequestBody movieSaveDto moviesavedto) {
-        Boolean bool=  movieservice.saveMovie(moviesavedto);
+        Boolean bool = movieservice.saveMovie(moviesavedto);
         return new ResponseEntity<>(bool, HttpStatus.CREATED);
     }
-
+    //yonetmenId sine göre response dto dönüyor clienta
     @GetMapping("getMovieByYonetmenId")
     public ResponseEntity<List<movieByYonetmenResponseDto>> findAllMovieByYonetmenId(@RequestParam Long yonetmenId){
-     List<movieByYonetmenResponseDto>  list=  movieservice.findAllMovieByYonetmenId(yonetmenId);
-     return new ResponseEntity<>(list, HttpStatus.OK);
+        //findAllMovieByYonetmenId methodunu jpanın anlıcağı şekilde yazdık oda arka tarafta sorguyu oluşturdu
+        List<movieByYonetmenResponseDto>list = movieservice.findAllMovieByYonetmenId(yonetmenId);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteMovieId")
+    public ResponseEntity<Boolean> deleteMovieId(@RequestParam Long movieId) {
+        Boolean bool = movieservice.deleteMovieId(movieId);
+        return new ResponseEntity<>(bool, HttpStatus.OK);
     }
 }
